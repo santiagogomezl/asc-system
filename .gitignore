@@ -1,6 +1,9 @@
 #Config files
 .config/
 
+#Report files
+reports/
+
 #Logs
 *.log
 
