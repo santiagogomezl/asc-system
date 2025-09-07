@@ -47,7 +47,7 @@ def main():
         first_request = dbi.query_db(users_requests_query + " LIMIT 1")
         first_date = first_request[0][0]
         report_date += " 00:00:00"
-        if first_date > datetime.datetime.strptime(report_date, '%Y-%m-%d %H:%M:%S'):
+        if first_date < datetime.datetime.strptime(report_date, '%Y-%m-%d %H:%M:%S'):
             get_users_requests(report_date)
         else:
             get_users_requests_archive(report_date)
