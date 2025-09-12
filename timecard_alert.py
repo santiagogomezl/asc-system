@@ -41,7 +41,7 @@ for user in users:
     #if user has not submitted a timecard
     if user_id not in timecard_user_id:
         smtp.send_email(user_email, email_subject, email_message)
-        logging.info(f'Timecard reminder sent to: {user_email}')
+        logging.info(f'Timecard alert sent to: {user_email}')
 
 smtp.disconnect_smtp()
 
