@@ -8,7 +8,7 @@ import yaml
 import logging
 # import logging.config
 
-logging_config = yaml.safe_load(open('/home/asc/dev/asc-system/.config/logging_config.yml'))
+logging_config = yaml.safe_load(open('/home/asc/dev/asc-system/config/logging_config.yml'))
 
 logging.basicConfig(
     filename= logging_config['filename'], 

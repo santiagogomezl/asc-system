@@ -1,5 +1,6 @@
 #Config files
 .config/
+config/
 
 #Report files
 reports/

@@ -4,7 +4,7 @@ import smtplib
 import yaml
 from email.message import EmailMessage
 
-smtp_config = yaml.safe_load(open('/home/asc/dev/asc-system/.config/smtp_config.yml'))
+smtp_config = yaml.safe_load(open('/home/asc/dev/asc-system/config/smtp_config.yml'))
 smtp_usr = smtp_config['smtp_usr']
 smtp_pwd = smtp_config['smtp_pwd']
 smtp_svr = smtplib.SMTP("smtp.office365.com", 587)

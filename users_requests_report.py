@@ -4,11 +4,16 @@ import sys
 import dbi
 import re
 import datetime
+import config.asc_menus as asc_menus
+
+asc_menus = asc_menus.menus
 
 """
 Todo: 
 Generate report with username instead of ID
 Get count of each controller using a dict
+
+Add flag --adduser
 """
 
 users_requests_query = (
@@ -35,6 +40,14 @@ def generate_report(report_data):
             created_at, controller_name, user_id, action = d
             f.write(created_at.strftime('%Y-%m-%d %H:%M:%S')+"\t"+controller_name+"\t"+str(user_id)+"\t"+action+"\n")
 
+def generate_menu_dict(menus):
+    menu_dict = {}
+    for key in menus.keys():
+        menu_items = menus[key].split(' ')
+        # menus_dict[key] = {}
+        for item in menu_items:
+            menu_dict[item] = 0
+
 def main():
     if len(sys.argv) == 2:
         report_date = sys.argv[1]
@@ -43,6 +56,8 @@ def main():
             print("Invalid input. Run script passing report date YYYY-MM-DD as argument  e.g users_requests_report 2025-06-15")
             return
 
+        #create dict and initiaize count to 0
+        generate_menu_dict(asc_menus)
         #select first row date from users_requests
         first_request = dbi.query_db(users_requests_query + " LIMIT 1")
         first_date = first_request[0][0]
@@ -57,5 +72,5 @@ def main():
         return
 
 if __name__ == "__main__":
-  main()
+    main()
 
