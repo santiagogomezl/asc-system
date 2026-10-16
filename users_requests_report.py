@@ -7,6 +7,7 @@ import datetime
 import config.asc_menus as asc_menus
 
 asc_menus = asc_menus.menus
+menu_dict = {}
 
 """
 Todo: 
@@ -38,13 +39,13 @@ def generate_report(report_data):
     with open('reports/users_requests_report_'+current_datetime+'.csv', 'a') as f:
         for d in report_data:
             created_at, controller_name, user_id, action = d
-            f.write(created_at.strftime('%Y-%m-%d %H:%M:%S')+"\t"+controller_name+"\t"+str(user_id)+"\t"+action+"\n")
+            if controller_name in menu_dict.keys():
+                menu_dict[controller_name] += 1
+            # f.write(created_at.strftime('%Y-%m-%d %H:%M:%S')+"\t"+controller_name+"\t"+str(user_id)+"\t"+action+"\n")
 
 def generate_menu_dict(menus):
-    menu_dict = {}
     for key in menus.keys():
         menu_items = menus[key].split(' ')
-        # menus_dict[key] = {}
         for item in menu_items:
             menu_dict[item] = 0
 
@@ -73,4 +74,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+    for k, v in menu_dict.items():
+        print(f'{k}: {v}')
+
 
