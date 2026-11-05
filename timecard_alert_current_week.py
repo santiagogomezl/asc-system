@@ -60,6 +60,8 @@ email_message = """
 Please go to the
 <a href="http://asc-data.ascoffice.com/my_timecards">My timecard</a>
 page to enter/submit your timecard for the current week.
+
+Your weekly timecard is due by 3:30pm of every Friday. If Friday falls on a holiday, the timecard must be submitted by 3:30pm on the preceding business day
 """
 
 # Connect to SMTP server
